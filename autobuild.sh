@@ -6,9 +6,11 @@ mkdir -p build
 
 rm -rf $(pwd)/build/*
 
-protoc --cpp_out=src/ src/rpcheader.proto
+cd src
+protoc --cpp_out=. rpcheader.proto
 
-mv $(pwd)/src/rpcheader.pb.h $(pwd)/src/include/
+cd ..
+mv src/rpcheader.pb.h src/include/
 
 cd $(pwd)/build &&
     cmake .. &&
