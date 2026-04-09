@@ -7,11 +7,13 @@ mkdir -p build
 rm -rf $(pwd)/build/*
 
 cd src
+
 protoc --cpp_out=. rpcheader.proto
 
-cd ..
-mv src/rpcheader.pb.h src/include/
+mv rpcheader.pb.h include/
 
-cd $(pwd)/build &&
+cd ..
+
+cd build &&
     cmake .. &&
     make
